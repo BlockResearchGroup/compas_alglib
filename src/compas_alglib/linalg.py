@@ -5,15 +5,12 @@ from __future__ import division
 import compas
 
 try:
-    from compas.numerical._alglib._core import Array
-    from compas.numerical._alglib._core import Zeros
-    from compas.numerical._alglib._core import xalglib
+    from compas_alglib._core import Array
+    from compas_alglib._core import Zeros
+    from compas_alglib._core import xalglib
 
 except ImportError:
     compas.raise_if_ironpython()
-
-
-__all__ = ['solve', 'spsolve', 'splsqr']
 
 
 class LinalgError(Exception):
@@ -34,11 +31,12 @@ class LinalgError(Exception):
 # rmatrixsolvelu(m)(fast) => combine with rmatrixlu (does not use caching)
 # rmatrixsolve(m)(fast)
 
+
 def solve(A, b, fast=True):
     m, k = A.shape
     k, n = b.shape
     if m != k:
-        raise LinalgError('Solver requires square matrix.')
+        raise LinalgError("Solver requires square matrix.")
     if not n:
         n = 1
     if n == 1:
@@ -86,12 +84,4 @@ def lu_solve():
 
 
 def cho_solve():
-    pass
-
-
-# ==============================================================================
-# Main
-# ==============================================================================
-
-if __name__ == "__main__":
     pass

@@ -116,5 +116,3 @@ temp/**
 .vscode
 
 docs/api/generated/
-
-conda.recipe/

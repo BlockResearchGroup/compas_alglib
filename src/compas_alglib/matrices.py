@@ -6,28 +6,22 @@ import sys
 import compas
 
 try:
-    from compas.numerical._alglib._core import Array
-    from compas.numerical._alglib._core import Zeros
-    from compas.numerical._alglib._core import Diagonal
-    from compas.numerical._alglib._core import SparseArray
+    from compas_alglib._core import Array
+    from compas_alglib._core import Zeros
+    from compas_alglib._core import Diagonal
+    from compas_alglib._core import SparseArray
 
-    from compas.numerical._alglib._core.xalglib import sparsecreate
-    from compas.numerical._alglib._core.xalglib import sparseset
-    from compas.numerical._alglib._core.xalglib import sparseget
-    from compas.numerical._alglib._core.xalglib import sparsegetnrows
-    from compas.numerical._alglib._core.xalglib import sparsegetncols
-    from compas.numerical._alglib._core.xalglib import sparseconverttocrs
-    from compas.numerical._alglib._core.xalglib import sparseconverttohash
-    from compas.numerical._alglib._core.xalglib import sparseishash
+    from compas_alglib._core.xalglib import sparsecreate
+    from compas_alglib._core.xalglib import sparseset
+    from compas_alglib._core.xalglib import sparseget
+    from compas_alglib._core.xalglib import sparsegetnrows
+    from compas_alglib._core.xalglib import sparsegetncols
+    from compas_alglib._core.xalglib import sparseconverttocrs
+    from compas_alglib._core.xalglib import sparseconverttohash
+    from compas_alglib._core.xalglib import sparseishash
 
 except ImportError:
     compas.raise_if_ironpython()
-
-
-__all__ = [
-    'connectivity_matrix',
-    'sparse_connectivity_matrix',
-]
 
 
 def connectivity_matrix(edges, v):
@@ -145,24 +139,3 @@ def sparse_connectivity_matrix(edges, v, rtype=None):
 #     if rtype == 'crs':
 #         sparseconverttocrs(CtQC)
 #     return CtQC
-
-
-# ==============================================================================
-# Debugging
-# ==============================================================================
-
-if __name__ == "__main__":
-
-    import compas
-    from compas.datastructures import Network
-
-    network = Network.from_obj(compas.get_data('lines.obj'))
-
-    key_index = network.key_index()
-    edges = [(key_index[u], key_index[v]) for u, v in network.edges()]
-
-    n = network.number_of_vertices()
-
-    C = connectivity_matrix(edges, n)
-
-    print(C)

@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-# flake8: noqa
-from __future__ import absolute_import
-from __future__ import print_function
-
 import io
 from os import path
 
@@ -17,8 +11,7 @@ here = path.abspath(path.dirname(__file__))
 
 def read(*names, **kwargs):
     return io.open(
-        path.join(here, *names),
-        encoding=kwargs.get("encoding", "utf8")
+        path.join(here, *names), encoding=kwargs.get("encoding", "utf8")
     ).read()
 
 
@@ -29,11 +22,11 @@ optional_requirements = {}
 setup(
     name="compas_alglib",
     version="0.1.0",
-    description="Numerical methods for COMPAS base don AlgLib",
+    description="Linear Algebra for DotNet.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/blockresearchgroup/compas_alglib",
-    author="tom van me;e",
+    url="https://github.com/BlockResearchGroup/compas_alglib",
+    author="tom van mele",
     author_email="van.mele@arch.ethz.ch",
     license="MIT license",
     classifiers=[
@@ -46,9 +39,10 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: CPython",
     ],
     keywords=[],
@@ -60,7 +54,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=requirements,
-    python_requires=">=3.6",
+    python_requires=">=2.7",
     extras_require=optional_requirements,
     entry_points={
         "console_scripts": [],
